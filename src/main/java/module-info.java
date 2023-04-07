@@ -7,6 +7,8 @@ module com.example {
     requires io.netty.codec;
     requires io.netty.common;
     requires io.netty.transport;
+    requires io.netty.codec.http;
+    requires io.netty.codec.http2;
    
 
     opens com.example to javafx.fxml;
