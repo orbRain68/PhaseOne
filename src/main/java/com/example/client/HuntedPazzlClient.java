@@ -1,8 +1,10 @@
-package com.example;
+package com.example.client;
 
 import java.io.IOException;
 import java.io.InputStream;
+import io.netty.buffer.ByteBufInputStream; // new
 import java.io.OutputStream;
+import io.netty.buffer.ByteBufOutputStream; // new
 import java.net.HttpURLConnection;
 import java.net.URL;
 import javafx.application.Application;
@@ -25,13 +27,14 @@ public class HuntedPazzlClient extends Application {
         playButton.setOnAction(event -> {
             try {
                 String playerName = nameField.getText();
-                int gameId = createGame(playerName);
-                // TODO: Implement game screen and logic
+                createGame(playerName); // Aplication works (Once)
+                // Close window after.
+                // TODO: Implement game screen and logic (Need client interface)
 
                 
 
             } catch (IOException e) {
-                e.printStackTrace();
+                System.err.println("Not Connected to Server!");;
             }
         });
 
@@ -43,24 +46,30 @@ public class HuntedPazzlClient extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-
-    private int createGame(String playerName) throws IOException {
-        URL url = new URL(SERVER_URL + "/games");
+    // Need rework
+    private void createGame(String playerName) throws IOException {
+        URL url = new URL(SERVER_URL );
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("POST");
         connection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
         connection.setDoOutput(true);
-
+        // writing to server (Client doesn't write to server)
+        // This code tells the server client's name.
         String jsonInputString = "{\"playerName\": \"" + playerName + "\"}";
+        System.out.println(jsonInputString);
         try (OutputStream os = connection.getOutputStream()) {
             byte[] input = jsonInputString.getBytes("utf-8");
-            os.write(input, 0, input.length);
-        }
 
+        }
+      
+        // Read from server (Client should take information from server)
+        // It should request the game from server.
         try (InputStream inputStream = connection.getInputStream()) {
             String response = new String(inputStream.readAllBytes());
-            return Integer.parseInt(response);
+            System.out.println(response);
+        
         }
+        
     }
 
     public static void main(String[] args) {

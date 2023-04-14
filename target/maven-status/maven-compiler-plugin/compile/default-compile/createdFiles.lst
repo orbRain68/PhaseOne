@@ -1,5 +1,5 @@
-com\example\HuntedPazzlServer$1.class
-com\example\HuntedPazzlServer.class
-com\example\HuntedPazzlServerHandler.class
-com\example\HuntedPazzlClient.class
+com\example\client\HuntedPazzlClient.class
 module-info.class
+com\example\server\HuntedPazzlServer.class
+com\example\server\HuntedPazzlServer$1.class
+com\example\server\HuntedPazzlServerHandler.class

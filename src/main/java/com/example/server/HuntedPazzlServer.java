@@ -1,4 +1,6 @@
-package com.example;
+package com.example.server;
+
+import com.example.server.game.Haunted_puzzle;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -7,10 +9,8 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.codec.DelimiterBasedFrameDecoder;
-import io.netty.handler.codec.Delimiters;
-import io.netty.handler.codec.string.StringDecoder;
-import io.netty.handler.codec.string.StringEncoder;
+import io.netty.handler.codec.http.HttpServerCodec;
+import io.netty.handler.codec.http.HttpServerExpectContinueHandler;
 
 public class HuntedPazzlServer {
     private int port;
@@ -29,9 +29,15 @@ public class HuntedPazzlServer {
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
+                            ch.pipeline().addLast(new HttpServerCodec());
+                            ch.pipeline().addLast(new HttpServerExpectContinueHandler());
                             ch.pipeline().addLast("handler",new HuntedPazzlServerHandler());
+                            Haunted_puzzle.main(null);
+                            
                         }
+                        
                     });
+                    
 
             ChannelFuture channelFuture = serverBootstrap.bind(port).sync();
             channelFuture.channel().closeFuture().sync();
@@ -43,12 +49,10 @@ public class HuntedPazzlServer {
 
     public static void main(String[] args) throws Exception {
         
-        if (args.length != 0) {
+        if (args.length > 0) {
             System.err.println("Usage: java " + HuntedPazzlServer.class.getSimpleName() + " <port>");
             return;
         }
-
-        //System.out.println(new HuntedPazzlServerHandler().channelRead(null, args));
         
         int port = Integer.parseInt("8080");
         new HuntedPazzlServer(port).run();
