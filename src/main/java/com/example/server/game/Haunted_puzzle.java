@@ -1,41 +1,67 @@
 package com.example.server.game;
 
-import java.io.IOException;
+import java.awt.Container;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
-/**
- * Haunted_puzzle
- * 
- */
-public class Haunted_puzzle extends Application {
-    
-    public void start(Stage primaryStage) throws Exception {
-        // TODO: Implement game screen
-         
-        Label label = new Label("Game");
-        TextField nameField = new TextField("Play the game here");
-        Button playButton = new Button("Play");
-        playButton.setOnAction(event -> {
-            String playerName = nameField.getText();
+public class Haunted_puzzle  implements ActionListener{
+
+    private static JButton btn, btn2;
+    private static JFrame frame;
+
+    public static void Client(){
+        frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setBounds(0, 0, 500, 500);
+        Container container = frame.getContentPane(); 
+        container.setLayout(null);
+
+         btn = new JButton("solve");
+        btn.setBounds(150, 10, 200, 40);
+        container.add(btn);
+        btn.addActionListener(new Haunted_puzzle(){
+            public void actionPerformed(ActionEvent arg0) {
+
+                if (arg0.getSource() == btn){
+                    JOptionPane.showMessageDialog(frame, "this is ");
+               // throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
+                }
+            }
         });
 
-        VBox root = new VBox();
-        root.getChildren().addAll(label, nameField, playButton);
+        frame.setVisible(true);
 
-        Scene scene = new Scene(root, 500, 350);
-        primaryStage.setTitle("Hunted Pazzl");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-        }
-public static void main(String[] args) {
-    launch(args);
-}
+         btn2 = new JButton("unsolve");
+        btn2.setBounds(150, 70, 200, 40);
+        container.add(btn2);
+        btn2.addActionListener(new Haunted_puzzle(){
+            public void actionPerformed(ActionEvent arg0) {
 
+                if (arg0.getSource() == btn2){
+                    JOptionPane.showMessageDialog(frame, "this is ");
+               // throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
+                }
+            }
+        });
+
+
+        frame.setVisible(true);
+
+    }
+
+    public static void main( String arge[]){
+    Client();
+
+    }
+
+
+    @Override
+    public void actionPerformed(ActionEvent arg0) {
+
+    }
+    
 }

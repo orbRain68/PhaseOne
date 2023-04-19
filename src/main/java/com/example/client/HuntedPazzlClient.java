@@ -2,9 +2,7 @@ package com.example.client;
 
 import java.io.IOException;
 import java.io.InputStream;
-import io.netty.buffer.ByteBufInputStream; // new
 import java.io.OutputStream;
-import io.netty.buffer.ByteBufOutputStream; // new
 import java.net.HttpURLConnection;
 import java.net.URL;
 import javafx.application.Application;
@@ -27,9 +25,11 @@ public class HuntedPazzlClient extends Application {
         playButton.setOnAction(event -> {
             try {
                 String playerName = nameField.getText();
+                // TODO: Implement game screen and logic (Need client interface)
                 createGame(playerName); // Aplication works (Once)
                 // Close window after.
-                // TODO: Implement game screen and logic (Need client interface)
+                Stage stage = (Stage) playButton.getScene().getWindow();  // get a handle to the stage
+                stage.hide();  // do what you have to do
 
                 
 
@@ -57,10 +57,6 @@ public class HuntedPazzlClient extends Application {
         // This code tells the server client's name.
         String jsonInputString = "{\"playerName\": \"" + playerName + "\"}";
         System.out.println(jsonInputString);
-        try (OutputStream os = connection.getOutputStream()) {
-            byte[] input = jsonInputString.getBytes("utf-8");
-
-        }
       
         // Read from server (Client should take information from server)
         // It should request the game from server.

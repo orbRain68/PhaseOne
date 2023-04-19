@@ -1,4 +1,4 @@
-module com.example {
+module com.example.server.game {
     requires javafx.controls;
     requires javafx.fxml;
 
@@ -10,9 +10,9 @@ module com.example {
     requires io.netty.codec.http;
     requires io.netty.codec.http2;
    
+    requires java.desktop; 
+    
 
-    opens com.example to javafx.fxml;
     exports com.example.client;
-    exports com.example.server.game;
 
 }

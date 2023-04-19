@@ -11,7 +11,6 @@ import io.netty.handler.codec.http.DefaultFullHttpResponse;
 import io.netty.handler.codec.http.FullHttpResponse;
 import io.netty.handler.codec.http.HttpRequest;
 import io.netty.handler.codec.http.HttpUtil;
-import com.example.server.game.Haunted_puzzle; // Calling an application (may remove)
 
 import static io.netty.handler.codec.http.HttpHeaderNames.CONNECTION;
 import static io.netty.handler.codec.http.HttpHeaderNames.CONTENT_LENGTH;
@@ -66,10 +65,10 @@ String data = byteBuf.toString(io.netty.util.CharsetUtil.US_ASCII);
             if (!keepAlive) {
                 f.addListener(ChannelFutureListener.CLOSE);
             }
+            com.example.server.game.Haunted_puzzle.Client();
         }
-
-        } finally {
-            byteBuf.release();
+    } finally {
+        byteBuf.release();
         }
     }
 

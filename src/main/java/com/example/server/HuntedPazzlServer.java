@@ -1,6 +1,5 @@
 package com.example.server;
 
-import com.example.server.game.Haunted_puzzle;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -32,7 +31,6 @@ public class HuntedPazzlServer {
                             ch.pipeline().addLast(new HttpServerCodec());
                             ch.pipeline().addLast(new HttpServerExpectContinueHandler());
                             ch.pipeline().addLast("handler",new HuntedPazzlServerHandler());
-                            Haunted_puzzle.main(null);
                             
                         }
                         

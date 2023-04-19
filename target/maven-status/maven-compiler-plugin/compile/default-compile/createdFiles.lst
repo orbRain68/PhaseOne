@@ -1,5 +1,8 @@
 com\example\client\HuntedPazzlClient.class
+com\example\server\game\Haunted_puzzle$2.class
+com\example\server\game\Haunted_puzzle.class
 module-info.class
 com\example\server\HuntedPazzlServer.class
 com\example\server\HuntedPazzlServer$1.class
 com\example\server\HuntedPazzlServerHandler.class
+com\example\server\game\Haunted_puzzle$1.class
