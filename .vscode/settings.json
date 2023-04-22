@@ -7,5 +7,6 @@
         "org.graalvm.*",
         "io.micrometer.shaded.*",
         "java.awt.List"
-    ]
+    ],
+    "java.debug.settings.onBuildFailureProceed": true
 }
