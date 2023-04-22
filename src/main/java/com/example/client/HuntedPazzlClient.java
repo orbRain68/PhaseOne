@@ -2,7 +2,6 @@ package com.example.client;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import javafx.application.Application;
@@ -45,7 +44,6 @@ public class HuntedPazzlClient extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-    // Need rework
     private void createGame(String playerName) throws IOException {
         // Client Recognise the server
         URL url = new URL(SERVER_URL );

@@ -21,7 +21,7 @@ public class Haunted_puzzle  implements ActionListener{
     private static JLayeredPane layeredPane,gameLayeredPane;
 
     /**
-     * @param playerNameString get Name from Client.
+     * @param playerNameString 
      * @throws IOException
      */
     private static void Game(String playerNameString) throws IOException{
@@ -83,9 +83,9 @@ public class Haunted_puzzle  implements ActionListener{
         JFrame.setDefaultLookAndFeelDecorated(true);
         frame = new JFrame(gameNameString);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setBounds(0, 0, 626, 790);//790
+        frame.setBounds(0, 0, 626, 790);
         frame.setLocationRelativeTo(null);
-        //frame.setResizable(false);
+        frame.setResizable(false);
         frame.setLayout(null);
         return frame;
     }
@@ -100,10 +100,13 @@ public class Haunted_puzzle  implements ActionListener{
 
         return button;
     }
+    /**
+     * @return
+     * Sepreate mothed: acts as panel Container
+     */
     private static JLayeredPane createGameLayeredPane() {
         layeredPane = new JLayeredPane();
         layeredPane.setBounds(0, 40, 616, 750);
-        layeredPane.setBackground(Color.RED);
         layeredPane.setLayout(null);
         return layeredPane;
     }
@@ -114,7 +117,6 @@ public class Haunted_puzzle  implements ActionListener{
     private static JPanel createGamePanel() {
         panel = new JPanel();
         panel.setSize(616, 720);
-        // panel.setLocation(0, 40); //15 40
         panel.setBackground(Color.BLACK);
         return panel; 
     }
@@ -132,6 +134,11 @@ public class Haunted_puzzle  implements ActionListener{
     Game("Player"); // testing the game
 
     }
+    /**
+     * @param player
+     * @throws IOException
+     * Getter mothed: Start game along with player's name.
+     */
     public static void stratGame(String player) throws IOException {
         Game(player);
     }

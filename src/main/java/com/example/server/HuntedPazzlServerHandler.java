@@ -21,7 +21,7 @@ import static io.netty.handler.codec.http.HttpHeaderValues.TEXT_PLAIN;
 import static io.netty.handler.codec.http.HttpResponseStatus.OK;
 
 public class HuntedPazzlServerHandler extends ChannelInboundHandlerAdapter {
-    private static final byte[] welcomeToGame = "Welcome to Haunted game".getBytes();
+    private static final String welcomeToGame = "Welcome to Haunted Puzzle \nConnected ...";
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         // TODO Auto-generated method stub
@@ -49,7 +49,7 @@ String data = byteBuf.toString(io.netty.util.CharsetUtil.US_ASCII);
 
                 boolean keepAlive = HttpUtil.isKeepAlive(req);
                 FullHttpResponse response = new DefaultFullHttpResponse(req.protocolVersion(), OK,
-                                                                    Unpooled.wrappedBuffer(welcomeToGame));
+                                                                    Unpooled.wrappedBuffer((byte[]) welcomeToGame.getBytes()));
             response.headers()
                     .set(CONTENT_TYPE, TEXT_PLAIN)
                     .setInt(CONTENT_LENGTH, response.content().readableBytes());
@@ -65,7 +65,7 @@ String data = byteBuf.toString(io.netty.util.CharsetUtil.US_ASCII);
             if (!keepAlive) {
                 f.addListener(ChannelFutureListener.CLOSE);
             }
-            com.example.server.game.Haunted_puzzle.Client();
+            com.example.server.game.Haunted_puzzle.stratGame(welcomeToGame); // Start game via server.
         }
     } finally {
         byteBuf.release();
