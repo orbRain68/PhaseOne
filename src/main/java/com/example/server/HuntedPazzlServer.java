@@ -47,7 +47,7 @@ public class HuntedPazzlServer {
 
     public static void main(String[] args) throws Exception {
         
-        if (args.length > 0) {
+        if (args.length > 0) { // condition for args if mistakes occurs
             System.err.println("Usage: java " + HuntedPazzlServer.class.getSimpleName() + " <port>");
             return;
         }
