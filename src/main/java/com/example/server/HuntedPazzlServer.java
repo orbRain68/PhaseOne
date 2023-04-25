@@ -18,6 +18,9 @@ public class HuntedPazzlServer {
         this.port = port;
     }
 
+    /**
+     * @throws Exception
+     */
     public void run() throws Exception {
         // create new event loop group for handling incoming connections
         EventLoopGroup bossGroup = new NioEventLoopGroup();
@@ -50,6 +53,10 @@ public class HuntedPazzlServer {
         }
     }
 
+    /**
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
         // check if command line arguments are provided
         if (args.length > 0) { // condition for args if mistakes occurs

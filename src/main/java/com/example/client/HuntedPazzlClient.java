@@ -54,6 +54,10 @@ public class HuntedPazzlClient extends Application {
     }
 
     // Method to connect to the server and send the client's name
+    /**
+     * @param playerName
+     * @throws IOException
+     */
     private void createGame(String playerName) throws IOException {
         // Create a URL object and open a connection to the server
         URL url = new URL(SERVER_URL );
@@ -76,6 +80,9 @@ public class HuntedPazzlClient extends Application {
     }
 
     // Main method to launch the JavaFX application
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args);
     }
