@@ -1,0 +1,4 @@
+--patch-module
+com.example.server.game=_
+--add-reads
+com.example.server.game=ALL-UNNAMED
