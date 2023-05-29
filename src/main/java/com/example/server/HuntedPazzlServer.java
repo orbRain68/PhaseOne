@@ -19,7 +19,9 @@ public class HuntedPazzlServer {
     }
 
     /**
-     * @throws Exception
+     * Starts and runs the HTTP server.
+     *
+     * @throws Exception if an error occurs during server operation
      */
     public void run() throws Exception {
         // create new event loop group for handling incoming connections
@@ -54,8 +56,10 @@ public class HuntedPazzlServer {
     }
 
     /**
-     * @param args
-     * @throws Exception
+     * Entry point for the HTTP server application.
+     *
+     * @param args command line arguments (not used in this case)
+     * @throws Exception if an error occurs during server operation
      */
     public static void main(String[] args) throws Exception {
         // check if command line arguments are provided
