@@ -28,7 +28,17 @@ public class HuntedPazzlServerTest {
         assertEquals("ok", outboundMessage.toString(CharsetUtil.UTF_8));
     }
 
+    /**
+     * A test handler that responds with "ok" when a message is received.
+     */
     public static class OkResponder extends ChannelInboundHandlerAdapter {
+
+        /**
+         * Invoked when a complete message is received from the channel.
+         * Responds with "ok" and closes the channel.
+         *
+         * @param ctx the channel handler context
+         */
         @Override
         public void channelReadComplete(ChannelHandlerContext ctx) {
             ctx.writeAndFlush(Unpooled.copiedBuffer("ok", CharsetUtil.UTF_8))
